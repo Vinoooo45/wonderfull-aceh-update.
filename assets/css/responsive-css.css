@@ -1,32 +1,172 @@
-/* 1. CEGAH LAYAR DIGESER KE SAMPING */
+/* =========================================================
+   WONDERFUL ACEH - responsive-css.css  (versi 2)
+   Letakkan paling AKHIR di <head>, setelah style.css.
+
+   Breakpoint (SAMA dengan template style.css):
+   - >= 1201px        : desktop / laptop besar
+   - 992px - 1200px   : laptop kecil
+   - 768px - 991px    : tablet (menu tetap horizontal, ringkas)
+   - <= 767px         : HP (menu hamburger bawaan template)
+   ========================================================= */
+
+
+/* ---------- 1. DASAR ---------- */
 html, body {
-  max-width: 100% !important;
-  overflow-x: hidden !important;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
-/* 2. PLACEHOLDER DESTINASI SELALU MUNCUL */
-.destination-card .card-media,
-.destination-item .thumb,
-.destination-item .icon {
-  display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  min-width: 100px !important;
-  min-height: 100px !important;
-  background-color: #f4f6f8 !important;
-  align-items: center !important;
-  justify-content: center !important;
+img {
+  max-width: 100%;
 }
 
-.destination-card .card-media *,
-.destination-item .icon * {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+/* Logo bawaan template punya margin-left:-150px sehingga
+   keluar layar di laptop kecil. Kita rapikan. */
+.header-area .main-nav .logo {
+  margin-left: 0;
 }
 
-/* 3. RESPONSIF DINAMIS (< 991px) */
-@media (max-width: 991px) {
+
+/* ---------- 2. STYLE YANG DIPINDAH DARI INLINE ---------- */
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  color: #1b5e20;
+}
+.eyebrow-light { color: #5fb454; letter-spacing: 1px; }
+
+.features-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #1e1e1e;
+  margin-top: 10px;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.section-desc {
+  color: #666;
+  line-height: 1.5;
+  font-size: 14px;
+}
+.section-desc-center { max-width: 600px; margin: 0 auto; }
+
+/* Kartu fitur: template menaruh ikon float kiri, di sini dibuat rata tengah */
+#features .features-item { margin-bottom: 0; }
+.features-item .features-icon { float: none; }
+#features .features-content { margin-left: 0; }
+.features-icon i { color: #5fb454; }
+.features-content h4 { font-size: 18px; font-weight: 700; }
+.features-content p { font-size: 14px; color: #7a7a7a; line-height: 1.6; }
+
+/* Kartu peraturan */
+.rule-box {
+  border-left: 4px solid #1b5e20;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+.rule-box h4 {
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.rule-box h4 i { color: #1b5e20; }
+.rule-box.rule-danger h4 i { color: #d32f2f; }
+.rule-box p { color: #555; font-size: 13px; margin: 0; line-height: 1.5; }
+
+/* Kartu destinasi */
+.destination-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  height: 100%;
+}
+.destination-card .card-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  background-color: #f4f6f8;
+}
+.destination-card .card-media i { color: #1b5e20; }
+.destination-card h4 { font-size: 17px; font-weight: 600; }
+.destination-card p { color: #555; font-size: 13px; margin: 0; line-height: 1.5; }
+
+
+/* ---------- 3. BANNER (tinggi berdasarkan LEBAR layar, bukan vh) ----------
+   Template memakai 95vh. Di layar pendek / DevTools, vh membuat
+   banner jadi strip tipis dan gambar tampak "gepeng". */
+@media (min-width: 768px) {
+  .main-banner .Modern-Slider .item .img-fill {
+    height: clamp(420px, 42vw, 700px);
+  }
+
+  .Modern-Slider .item h3 {
+    margin-bottom: 15px;
+  }
+  .Modern-Slider .item h5 {
+    margin-bottom: 0;
+    font-size: clamp(22px, 2.6vw, 36px);
+  }
+}
+
+
+/* ---------- 4. LAPTOP KECIL (992px - 1200px) ---------- */
+@media (min-width: 992px) and (max-width: 1200px) {
+  .header-area .main-nav .logo {
+    font-size: 22px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .header-area .main-nav .nav li {
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+  .header-area .main-nav .nav li a {
+    white-space: nowrap;
+  }
+
+  #about { padding-top: 90px; }
+  #about .container { padding-bottom: 60px; }
+}
+
+
+/* ---------- 5. TABLET (768px - 991px) ----------
+   Menu tetap horizontal tetapi dipadatkan, karena template baru
+   menampilkan hamburger di <= 767px. */
+@media (min-width: 768px) and (max-width: 991px) {
+  .header-area .container {
+    max-width: 100%;
+  }
+  .header-area .main-nav .logo {
+    font-size: 18px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .header-area .main-nav .nav li {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+  .header-area .main-nav .nav li a {
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  #about { padding-top: 80px; }
+  #about .container { padding-bottom: 50px; }
+}
+
+
+/* ---------- 6. HP (<= 767px) ---------- */
+@media (max-width: 767px) {
 
   /* HEADER & LOGO */
   header.header-area,
@@ -38,7 +178,7 @@ html, body {
     height: 70px !important;
     background-color: #ffffff !important;
     z-index: 99999 !important;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05) !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05) !important;
   }
 
   header.header-area .main-nav,
@@ -47,11 +187,12 @@ html, body {
     align-items: center !important;
     justify-content: space-between !important;
     height: 70px !important;
+    min-height: 70px !important;
     padding: 0 20px !important;
   }
 
-  header.header-area .logo,
-  .header-area .logo {
+  header.header-area .main-nav .logo,
+  .header-area .main-nav .logo {
     position: relative !important;
     float: none !important;
     line-height: normal !important;
@@ -60,8 +201,10 @@ html, body {
     font-size: clamp(16px, 4.5vw, 22px) !important;
     font-weight: 700 !important;
     white-space: nowrap !important;
+    color: #1e1e1e !important;   /* template membuat logo putih -> tak terlihat di header putih */
   }
 
+  /* TOMBOL HAMBURGER (template menampilkannya di <= 767px) */
   header.header-area .menu-trigger,
   .header-area .menu-trigger {
     position: relative !important;
@@ -69,18 +212,20 @@ html, body {
     right: auto !important;
     float: none !important;
     margin: 0 !important;
+    flex-shrink: 0;
   }
 
-  /* FIX DROPDOWN / SIDEBAR MENU MOBILE */
+  /* DROPDOWN MENU */
   header.header-area .main-nav .nav,
   .header-area .main-nav .nav {
     position: absolute !important;
     top: 70px !important;
     left: 0 !important;
     width: 100% !important;
+    margin: 0 !important;
     background-color: #ffffff !important;
     z-index: 999999 !important;
-    box-shadow: 0 10px 15px rgba(0,0,0,0.1) !important;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1) !important;
     padding: 10px 0 !important;
     border-top: 1px solid #eee !important;
   }
@@ -97,68 +242,55 @@ html, body {
     display: block !important;
     padding: 12px 25px !important;
     width: 100% !important;
+    height: auto !important;
+    line-height: 1.4 !important;
     box-sizing: border-box !important;
     color: #333 !important;
     font-size: 14px !important;
+    opacity: 1 !important;
   }
 
-  /* BANNER GAMBAR */
+  /* BANNER */
   .main-banner,
-  #top,
-  .main-banner .Modern-Slider {
+  #top {
     margin-top: 0 !important;
     padding-top: 0 !important;
-    position: relative !important;
-    top: 0 !important;
   }
 
-  .main-banner .Modern-Slider,
-  .main-banner .Modern-Slider .item,
-  .main-banner .Modern-Slider .img-fill {
-    height: 45vh !important;
-    min-height: 280px !important;
-    max-height: 480px !important;
+  .main-banner .Modern-Slider .item .img-fill {
+    height: clamp(260px, 66vw, 420px);
   }
 
-  .main-banner .Modern-Slider .img-fill img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center !important;
+  .Modern-Slider .item h3 {
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+  .Modern-Slider .item h5 {
+    margin-bottom: 0;
+    font-size: clamp(16px, 5vw, 22px);
+    letter-spacing: 1px;
+    line-height: 1.3;
   }
 
-  /* TEKS BANNER */
-  .main-banner .text-content,
-  .Modern-Slider .text-content {
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    padding: 0 45px !important;
-    box-sizing: border-box !important;
-    text-align: left !important;
-  }
-
-  .main-banner .text-content h3,
-  .Modern-Slider .text-content h3,
-  .main-banner .text-content h2,
-  .Modern-Slider .text-content h2 {
-    font-size: clamp(15px, 4vw, 20px) !important;
-    line-height: 1.3 !important;
-    word-break: break-word !important;
-  }
-
-  .main-banner .text-content h5,
-  .Modern-Slider .text-content h5,
-  .main-banner .text-content span,
-  .Modern-Slider .text-content span {
-    font-size: 11px !important;
-    letter-spacing: 1px !important;
-  }
-
-  /* SEMBUNYIKAN PANAH HIZAU MELAYANG */
+  /* Panah hijau disembunyikan di HP */
   .scroll-down {
     display: none !important;
   }
+
+  /* Jarak antar bagian */
+  #about { padding-top: 60px; }
+  #about .container { padding-bottom: 40px; }
+  #features { padding-top: 50px; }
+
+  .features-title,
+  .section-title { font-size: 24px; }
+}
+
+
+/* ---------- 7. HP KECIL (<= 575px) ---------- */
+@media (max-width: 575px) {
+  .features-title,
+  .section-title { font-size: 21px; }
+
+  .features-item { padding: 1.25rem !important; }
 }
