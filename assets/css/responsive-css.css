@@ -294,3 +294,31 @@ img {
 
   .features-item { padding: 1.25rem !important; }
 }
+
+
+/* ---------- 8. KARTU DESTINASI: foto seragam & sejajar ---------- */
+.destination-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.destination-card .card-media {
+  height: clamp(200px, 22vw, 300px);
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.destination-card .card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .destination-card .card-media {
+    height: clamp(180px, 52vw, 260px);
+  }
+}
