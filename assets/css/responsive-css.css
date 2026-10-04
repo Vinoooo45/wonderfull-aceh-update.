@@ -322,3 +322,57 @@ img {
     height: clamp(180px, 52vw, 260px);
   }
 }
+
+/* ---------- 9. TEAM CAROUSEL (Tim Pengembang) ----------
+   TEMPEL di PALING BAWAH responsive-css.css (setelah bagian 8).
+   Style dasarnya ada di team-carousel.css; di sini hanya ukuran per layar. */
+
+/* Laptop 13-14 inci & laptop kecil (<= 1200px) */
+@media (max-width: 1200px) {
+  .tc {
+    --tc-wide: 270px;
+    --tc-height: 330px;
+  }
+}
+
+/* Tablet (<= 991px) */
+@media (max-width: 991px) {
+  .tc {
+    --tc-narrow: 76px;
+    --tc-wide: 260px;
+    --tc-height: 320px;
+  }
+}
+
+/* HP (<= 767px) */
+@media (max-width: 767px) {
+  .tc {
+    --tc-narrow: 56px;
+    --tc-wide: 220px;
+    --tc-gap: 10px;
+    --tc-height: 290px;
+  }
+
+  .tc-footer { gap: 12px; }
+  .tc-name { font-size: 16px; }
+  .tc-role { font-size: 13px; }
+
+  .tc-end-full { padding: 18px; }
+  .tc-end-full strong { font-size: 20px; }
+  .tc-end-full span { font-size: 13px; }
+}
+
+/* HP kecil (<= 575px): 2 kartu sempit + 1 kartu lebar harus muat di layar 320px */
+@media (max-width: 575px) {
+  .tc {
+    --tc-narrow: 44px;
+    --tc-wide: 170px;
+    --tc-gap: 8px;
+    --tc-height: 250px;
+  }
+
+  .tc-end-full { padding: 12px; }
+  .tc-end-full strong { font-size: 17px; }
+  .tc-end-full span { font-size: 12px; }
+  .tc-end-short { font-size: 12px; letter-spacing: 2px; }
+}

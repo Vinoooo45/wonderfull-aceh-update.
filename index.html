@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
     <link rel="stylesheet" href="assets/css/lightbox.css">
-    <!-- responsive-css.css HARUS paling akhir agar bisa menimpa style template -->
+    <link rel="stylesheet" href="assets/css/team-carousel.css">
     <link rel="stylesheet" href="assets/css/responsive-css.css">
 </head>
 
@@ -102,6 +102,8 @@
     <!-- ***** Main Banner Area End ***** -->
 
     <!-- ***** About Area Starts ***** -->
+
+     <!-- ***** About Area Starts ***** -->
     <section class="section" id="about">
         <div class="container">
             <div class="row">
@@ -116,55 +118,59 @@
                 </div>
             </div>
 
-            <div class="row mt-5">
-                <div class="col-lg-12">
-                    <div class="section-heading text-center">
-                        <h6>Tim Pengembang</h6>
-                        <h2>Semen Dan Beton</h2>
-                    </div>
-                </div>
+<!-- GANTI seluruh blok <div class="row mt-5"> ... </div> di dalam section #about
+     (yang berisi Tim Pengembang + Member 1, 2, 3) dengan kode di bawah ini. -->
+<div class="row mt-5">
+    <div class="col-lg-12">
+        <div class="section-heading text-center">
+            <h6>Tim Pengembang</h6>
+            <h2>Semen Dan Beton</h2>
+        </div>
+    </div>
 
-                <!-- Member 1 -->
-                <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
-                    <div class="team-item text-center">
-                        <div class="team-thumb">
-                            <img src="assets/images/vino1.jpg" alt="Vino Jafran Al Mukmin" class="img-fluid">
-                        </div>
-                        <div class="team-content mt-3">
-                            <h4>Vino Jafran Al Mukmin</h4>
-                            <span>Project Manager / Programmer</span>
-                        </div>
-                    </div>
-                </div>
+    <div class="col-lg-8 offset-lg-2 col-md-12">
+        <div class="tc" id="team-carousel">
 
-                <!-- Member 2 -->
-                <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
-                    <div class="team-item text-center">
-                        <div class="team-thumb">
-                            <img src="assets/images/alif.jpg" alt="Muhammad Alif Akviliano" class="img-fluid">
-                        </div>
-                        <div class="team-content mt-3">
-                            <h4>Muhammad Alif Akviliano</h4>
-                            <span>UI/UX</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="tc-viewport">
+                <div class="tc-track">
+                    <!-- Satu kartu = satu anggota. Ubah data-name, data-role, dan src -->
+                     <button type="button" class="tc-card" data-name="Muhammad Alif Akviliano" data-role="UI/UX" aria-label="Muhammad Alif Akviliano">
+                        <img src="assets/images/alif.jpg" alt="Muhammad Alif Akviliano">
+                    </button>
 
-                <!-- Member 3 -->
-                <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
-                    <div class="team-item text-center">
-                        <div class="team-thumb">
-                            <img src="assets/images/araziq.jpg" alt="Teuku Araziq Attahillah" class="img-fluid">
-                        </div>
-                        <div class="team-content mt-3">
-                            <h4>Teuku Araziq Attahillah</h4>
-                            <span>UI/UX</span>
-                        </div>
-                    </div>
+                    <button type="button" class="tc-card" data-name="Vino Jafran Al Mukmin" data-role="Project Manager / Programmer" aria-label="Vino Jafran Al Mukmin">
+                        <img src="assets/images/vino1.jpg" alt="Vino Jafran Al Mukmin">
+                    </button>
+
+                    <button type="button" class="tc-card" data-name="Teuku Araziq Attahillah" data-role="UI/UX" aria-label="Teuku Araziq Attahillah">
+                        <img src="assets/images/araziq.jpg" alt="Teuku Araziq Attahillah">
+                    </button>
+
+                    <!-- Kartu penutup: ubah teks sesuai kebutuhan -->
+                    <button type="button" class="tc-card tc-end" data-name="Tentang Kami" data-role="Tim Semen Dan Beton" aria-label="Terima kasih dari tim Semen Dan Beton">
+                        <span class="tc-end-short">WONDERFUL ACEH</span>
+                        <span class="tc-end-full">
+                            <strong>Tentang Kami</strong>
+                            <span>Kami adalah tim siswa/pengembang di balik website Wonderful Aceh. Berkomitmen memperkenalkan keindahan & budaya Aceh melalui media digital</span>
+                        </span>
+                    </button>
                 </div>
             </div>
+
+            <div class="tc-footer">
+                <button type="button" class="tc-btn tc-prev" aria-label="Anggota sebelumnya">&larr;</button>
+
+                <div class="tc-info" aria-live="polite">
+                    <h4 class="tc-name"></h4>
+                    <span class="tc-role"></span>
+                </div>
+
+                <button type="button" class="tc-btn tc-next" aria-label="Anggota berikutnya">&rarr;</button>
+            </div>
+
         </div>
-    </section>
+    </div>
+</div>
     <!-- ***** About Area Ends ***** -->
 
     <!-- ***** Features Section Start ***** -->
@@ -404,6 +410,7 @@
     <script src="assets/js/lightbox.js"></script>
     <script src="assets/js/isotope.js"></script>
     <script src="assets/js/custom.js"></script>
+    <script src="assets/js/team-carousel.js"></script>
 
 </body>
 

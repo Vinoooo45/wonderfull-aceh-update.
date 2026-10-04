@@ -1,0 +1,166 @@
+/* =========================================================
+   TEAM CAROUSEL (Tim Pengembang)
+   Kartu aktif melebar & berwarna, kartu lain menyempit & abu-abu.
+   Ukuran per layar diatur di responsive-css.css lewat variabel --tc-*
+   ========================================================= */
+
+.tc {
+  --tc-narrow: 84px;    /* lebar kartu non-aktif */
+  --tc-wide: 300px;     /* lebar kartu aktif */
+  --tc-gap: 12px;
+  --tc-height: 360px;
+  --tc-speed: .5s;
+  --tc-accent: #1b5e20;
+}
+
+/* jendela yang memotong kartu yang keluar area */
+.tc-viewport {
+  overflow: hidden;
+}
+
+/* baris kartu, digeser oleh JS lewat transform */
+.tc-track {
+  display: flex;
+  gap: var(--tc-gap);
+  transition: transform var(--tc-speed) ease;
+}
+
+.tc-card {
+  flex: 0 0 var(--tc-narrow);
+  height: var(--tc-height);
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #e5e5e5;
+  cursor: pointer;
+  filter: grayscale(1) brightness(.85);
+  transition: flex-basis var(--tc-speed) ease, filter var(--tc-speed) ease;
+}
+
+.tc-card.is-active {
+  flex-basis: var(--tc-wide);
+  filter: none;
+}
+
+.tc-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.tc-card:focus-visible,
+.tc-btn:focus-visible {
+  outline: 3px solid var(--tc-accent);
+  outline-offset: 3px;
+}
+
+/* kartu penutup (tanpa foto) */
+.tc-end {
+  position: relative;
+  color: #fff;
+  font-family: inherit;
+  background: linear-gradient(160deg, #1b5e20, #2e7d32 55%, #5fb454);
+}
+
+.tc-end-short,
+.tc-end-full {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: opacity var(--tc-speed) ease;
+}
+
+/* saat sempit: teks vertikal */
+.tc-end-short {
+  writing-mode: vertical-rl;
+  letter-spacing: 3px;
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 1;
+}
+
+/* saat melebar: pesan penuh */
+.tc-end-full {
+  padding: 24px;
+  opacity: 0;
+}
+
+.tc-end-full strong {
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.tc-end-full span {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: .9;
+}
+
+.tc-end.is-active .tc-end-short { opacity: 0; }
+.tc-end.is-active .tc-end-full { opacity: 1; }
+
+/* nama, jabatan, dan tombol panah di bawah kartu */
+.tc-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.tc-info {
+  flex: 1 1 auto;
+  max-width: 340px;
+  text-align: center;
+}
+
+.tc-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e1e1e;
+}
+
+.tc-role {
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+  color: #666;
+}
+
+.tc-btn {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 36px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--tc-accent);
+  color: #fff;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity .2s ease;
+}
+
+.tc-btn:disabled {
+  opacity: .35;
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tc-track,
+  .tc-card,
+  .tc-end-short,
+  .tc-end-full {
+    transition: none;
+  }
+}
