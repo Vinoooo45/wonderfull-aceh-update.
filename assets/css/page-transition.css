@@ -1,0 +1,12 @@
+/* Halaman baru muncul pelan */
+body { animation: pageIn .45s ease both; }
+@keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Halaman lama memudar saat pindah */
+body.page-leaving { opacity: 0; transition: opacity .3s ease; }
+
+/* Hormati pengguna yang mematikan animasi di perangkatnya */
+@media (prefers-reduced-motion: reduce) {
+    body { animation: none; }
+    body.page-leaving { transition: none; }
+}
